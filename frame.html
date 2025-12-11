@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Frame</title>
+
+<style>
+    /* Full page grid layout */
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 330px 1fr; /* left column fixed */
+        height: 100vh;
+    }
+
+    /* Right side: top & bottom rows */
+    .right-side {
+        display: grid;
+        grid-template-rows: 30% 70%;
+        height: 100%;
+    }
+
+    /* iFrames must fill their grid cells */
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    /* ============================================
+       MOBILE RESPONSIVENESS
+       ============================================ */
+
+    /* When screen is narrow → stack vertically */
+    @media (max-width: 700px) {
+        .grid-container {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto;
+        }
+
+        .right-side {
+            grid-template-rows: 25% 75%;
+        }
+
+        /* Left column moves to top */
+        .left {
+            height: 220px; /* adjust as needed */
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="grid-container">
+
+    <!-- Left Side -->
+    <div class="left">
+        <iframe src="leftframe.html" name="leftFrame"></iframe>
+    </div>
+
+    <!-- Right Side (Top + Bottom) -->
+    <div class="right-side">
+        <iframe src="topframe.html" name="topFrame"></iframe>
+        <iframe src="home.html" name="bottomFrame"></iframe>
+    </div>
+
+</div>
+
+</body>
+</html>

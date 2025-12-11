@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gallery</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Times New Roman, sans-serif;
+    background: linear-gradient(90deg, #66bfff 0%, #4aa7ff 35%, #cceaff 100%);
+    text-align: center;
+}
+
+/* === HOME BUTTON === */
+.topbar {
+    width: 100%;
+    padding: 15px;
+    background: #ffffffaa;
+    border-bottom: 1px solid #4dc3ff;
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(5px);
+}
+
+.home-btn {
+    font-size: 20px;
+    font-weight: bold;
+    color: #005c99;
+    padding: 10px 20px;
+    border: 2px solid #005c99;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+    background: #005c99;
+    color: white;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    margin: 40px auto;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #003d66;
+}
+
+/* FLOATING MUSIC CONTROLS */
+.music-controls {
+    position: fixed;
+    top: 20%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #005c99;
+    padding: 8px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 99999;
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+
+.music-controls button {
+    background: #005c99;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 4px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 40%;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.music-controls button:hover {
+    background: #003d66;
+}
+
+.music-controls input[type="range"] {
+    width: 40%;
+    margin-top: 6px;
+}
+
+/* === RESPONSIVE FLOATING CONTROLS FOR MOBILE === */
+@media(max-width: 600px) {
+    .music-controls {
+        top: 15px;
+        right: 10px;
+        transform: none;
+        padding: 6px;
+        border-radius: 10px;
+        width: 90px;
+    }
+
+    .music-controls button {
+        width: 100%;
+        padding: 6px 8px;
+        margin: 3px 0;
+        font-size: 11px;
+        border-radius: 6px;
+    }
+
+    .music-controls input[type="range"] {
+        width: 100%;
+        margin-top: 4px;
+    }
+}
+
+/* === GALLERY GRID === */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.photo:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+}
+
+.photo img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.photo:hover img {
+    transform: scale(1.05);
+}
+
+.label {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #005c99;
+}
+
+/* === POPUP IMAGE MODAL === */
+#popup {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+#popup img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 12px;
+    box-shadow: 0 0 20px #000;
+}
+
+/* VIDEO ZOOM ANIMATION */
+.video-zoom {
+    transform: scale(1.05);
+}
+
+@keyframes zoom {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Footer */
+footer {
+    background-color: #ffffff;
+    padding: 25px 10px;
+    text-align: center;
+    border-top: 1px solid #4dc3ff;
+    margin-top: 60px;
+    font-family: "Times New Roman", sans-serif;
+}
+
+.footer-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #003f66;
+}
+
+.social-icons a {
+    margin: 0 12px;
+    font-size: 28px;
+    color: #005c99;
+    transition: 0.25s;
+}
+
+.social-icons a:hover {
+    opacity: 0.6;
+    transform: translateY(-3px);
+}
+
+.footer-credit {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #003f66;
+    opacity: 0.85;
+}
+</style>
+</head>
+
+<body>
+
+<!-- AUDIO (Empty, JS will load playlist) -->
+<audio id="bgMusic" autoplay></audio>
+
+<!-- FLOATING MUSIC CONTROL PANEL -->
+<div class="music-controls">
+    <button onclick="toggleMusic()">▶️ / ⏸️</button>
+    <button onclick="muteMusic()">🔇</button>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1"
+           onchange="changeVolume(this.value)">
+</div>
+
+<!-- HOME BUTTON BAR -->
+<div class="topbar">
+    <a href="home.html" class="home-btn">🏠 Home</a>
+</div>
+
+<div class="container">
+    <div class="title">My Gallery</div>
+
+    <div class="gallery">
+        
+        <!-- VIDEO ITEM -->
+        <div class="photo">
+            <video id="galleryVideo" onclick="toggleVideo()" preload="none"
+            style="width:100%; height:160px; border-radius:8px; object-fit:cover;">
+                <source src="video.mp4" type="video/mp4">
+            </video>
+            <div class="label">My Video</div>
+        </div>
+
+        <!-- All images updated to lazy load -->
+        <div class="photo">
+            <img src="gallery1.jpg" loading="lazy" onclick="openPopup(this.src)">
+            <div class="label">Image 1</div>
+        </div>
+
+        <div class="photo">
+            <img src="gallery2.jpg" loading="lazy" onclick="openPopup(this.src)">
+            <div class="label">Image 2</div>
+        </div>
+
+        <div class="photo">
+            <img src="gallery3.jpg" loading="lazy" onclick="openPopup(this.src)">
+            <div class="label">Image 3</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery4.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 4</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery5.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 5</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery6.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 6</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery7.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 7</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery8.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 8</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery9.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 9</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery10.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 10</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery11.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 11</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery12.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 12</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery13.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 13</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery14.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 14</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery25.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 15</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery16.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 16</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery20.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 17</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery46.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 18</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery19.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 19</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery40.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 20</div>
+        </div>
+
+        <div class="photo">
+            <img src="gallery21.jpg" loading="lazy" onclick="openPopup(this.src)">
+            <div class="label">Image 21</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery22.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 22</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery23.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 23</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery38.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 24</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery15.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 25</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery26.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 26</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery27.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 27</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery32.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 28</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery29.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 29</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery47.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 30</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery37.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 31</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery50.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 32</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery43.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 33</div>
+        </div>
+
+        <div class="photo">
+             <img src="gallery39.jpg" loading="lazy" onclick="openPopup(this.src)">
+             <div class="label">Image 34</div>
+        </div>
+        
+    </div>
+</div>
+
+<!-- POPUP FULLSCREEN VIEW -->
+<div id="popup" onclick="closePopup()">
+    <img id="popupImg">
+</div>
+
+<footer>
+    <p class="footer-title">Find me on my socials</p>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/winternight_court/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/hurul-aina-047619399/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/whoruleina13" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://open.spotify.com/user/tcdo3jlolviyhmnk31d2w57dk" target="_blank"><i class="fab fa-spotify"></i></a>
+    </div>
+
+    <p class="footer-credit">Made by Hurul Aina</p>
+</footer>
+
+
+<!-- ==== SCRIPT ==== -->
+<script>
+/* ===========================
+   POPUP IMAGE VIEW
+=========================== */
+function openPopup(src) {
+    document.getElementById("popupImg").src = src;
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+}
+
+/* ===========================
+   VIDEO CONTROL
+=========================== */
+const video = document.getElementById("galleryVideo");
+const bgMusic = document.getElementById("bgMusic");
+
+function toggleVideo() {
+    if (video.paused) {
+        video.classList.add("video-zoom");
+        video.play();
+        bgMusic.pause();
+    } else {
+        video.classList.remove("video-zoom");
+        video.pause();
+        bgMusic.play();
+    }
+}
+
+video.addEventListener("ended", () => {
+    video.classList.remove("video-zoom");
+    bgMusic.play();
+});
+
+/* ===========================
+   PLAYLIST SYSTEM
+=========================== */
+const playlist = [
+    "music5.m4a",
+    "music1.m4a",
+    "music6.m4a"
+];
+
+let currentTrack = 0;
+
+function loadTrack() {
+    bgMusic.src = playlist[currentTrack];
+    bgMusic.load();
+    bgMusic.play();
+}
+
+bgMusic.addEventListener("ended", () => {
+    currentTrack = (currentTrack + 1) % playlist.length;
+    loadTrack();
+});
+
+loadTrack();
+
+/* ===========================
+   MUSIC CONTROL BUTTONS
+=========================== */
+function toggleMusic() {
+    if (bgMusic.paused) bgMusic.play();
+    else bgMusic.pause();
+}
+
+function muteMusic() {
+    bgMusic.muted = !bgMusic.muted;
+}
+
+function changeVolume(v) {
+    bgMusic.volume = v;
+}
+</script>
+
+</body>
+</html>

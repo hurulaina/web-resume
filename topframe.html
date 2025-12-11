@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Times New Roman, sans-serif;
+            background: linear-gradient(90deg, #eaf6ff 0%, #dff1ff 35%, #f8fcff 100%);
+        }
+
+        .main {
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        /* Container around marquee text */
+        .title-wrapper {
+            background: #80dfff;
+            padding: 20px 10px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        /* The marquee must stay, but text must scale responsively */
+        .geek1 {
+            font-size: clamp(20px, 6vw, 36px);
+            font-weight: bold;
+            color: #0066ff;
+            text-align: center;
+        }
+
+        .geek2 {
+            text-align: center;
+            font-size: clamp(16px, 4.5vw, 22px);
+        }
+
+        h4 {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        /* Responsive navigation buttons */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            padding: 0 10px;
+        }
+
+        .nav-buttons button {
+            padding: 10px 15px;
+            background: white;
+            border: 1px solid #007acc;
+            border-radius: 6px;
+            flex: 1 1 140px;
+            max-width: 200px;
+        }
+
+        .nav-buttons button a {
+            text-decoration: none;
+            color: #005c99;
+            font-weight: bold;
+        }
+
+        .nav-buttons button:hover {
+            background: #e6f4ff;
+            cursor: pointer;
+        }
+
+        /* Prevent marquee text from overflowing on small screens */
+        marquee {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="main">
+    <div class="title-wrapper">
+        <!-- ORIGINAL MARQUEE RESTORED EXACTLY AS REQUESTED -->
+        <marquee class="marq" bgcolor="#80dfff" direction="up" loop="">
+            <div class="geek1">HURUL AINA KARMILA BINTI MOHAMAD ROSLY</div>
+            <div class="geek2">Student ID: 2024845988</div>
+        </marquee>
+    </div>
+</div>
+
+<h4>Navigation</h4>
+<div class="nav-buttons">
+    <button><a href="home.html" target="blank">HOME</a></button>
+    <button><a href="personaldetails.html" target="bottomFrame">PERSONAL DETAILS</a></button>
+    <button><a href="edu.html" target="bottomFrame">EDUCATION</a></button>
+    <button><a href="work.html" target="bottomFrame">WORK EXPERIENCE</a></button>
+    <button><a href="skills.html" target="bottomFrame">SKILLS</a></button>
+</div>
+
+</body>
+</html>
+

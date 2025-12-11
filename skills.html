@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Skills</title>
+
+    <!-- FIXED RESPONSIVENESS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body {
+            background: #f4faff;
+            font-family: "Times New Roman", serif;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        /* GRID */
+        .skills-grid {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        /* GRADIENT BOXES */
+        .skill-section {
+            width: 300px;
+            background: linear-gradient(90deg, #66bfff 0%, #4aa7ff 35%, #cceaff 100%);
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #003d66;
+        }
+
+        /* BAR STYLE */
+        .bar {
+            background-color: #eaeaea;
+            width: 100%;
+            height: 20px;
+            border-radius: 20px;
+            margin: 6px 0 14px;
+            overflow: hidden;
+        }
+
+        /* BAR FILL */
+        .bar-fill {
+            background-color: #005c99;
+            height: 100%;
+            color: white;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+        }
+
+        /* NAV BUTTONS */
+        .nav {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        button {
+            padding: 9px 18px;
+            background: white;
+            border: 1px solid #007acc;
+            border-radius: 6px;
+            margin: 0 6px;
+        }
+
+        button a {
+            text-decoration: none;
+            color: #005c99;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #e6f4ff;
+            cursor: pointer;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #ffffff;
+            padding: 25px 10px;
+            text-align: center;
+            border-top: 1px solid #4dc3ff;
+            margin-top: 60px;
+            font-family: "Times New Roman", sans-serif;
+        }
+
+        .footer-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #003f66;
+        }
+
+        .social-icons a {
+            margin: 0 12px;
+            font-size: 28px;
+            color: #005c99;
+            transition: 0.25s;
+        }
+
+        .social-icons a:hover {
+            opacity: 0.6;
+            transform: translateY(-3px);
+        }
+
+        .footer-credit {
+            margin-top: 15px;
+            font-size: 16px;
+            color: #003f66;
+            opacity: 0.85;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1 style="font-size:32px; margin-bottom:20px; color:#003d66;">Skills</h1>
+
+    <div class="skills-grid">
+
+        <!-- SOFTWARE SKILLS -->
+        <div class="skill-section">
+            <div class="section-title">Software Skills</div>
+
+            <p>Microsoft Word</p>
+            <div class="bar"><div class="bar-fill" style="width:80%;">80%</div></div>
+
+            <p>Canva</p>
+            <div class="bar"><div class="bar-fill" style="width:80%;">80%</div></div>
+
+            <p>PowerPoint</p>
+            <div class="bar"><div class="bar-fill" style="width:75%;">75%</div></div>
+
+            <p>Microsoft Excel</p>
+            <div class="bar"><div class="bar-fill" style="width:60%;">60%</div></div>
+
+            <p>Adobe Photoshop</p>
+            <div class="bar"><div class="bar-fill" style="width:40%;">40%</div></div>
+
+            <p>Microsoft Access</p>
+            <div class="bar"><div class="bar-fill" style="width:30%;">30%</div></div>
+        </div>
+
+        <!-- SOFT SKILLS -->
+        <div class="skill-section">
+            <div class="section-title">Soft Skills</div>
+
+            <p>Listening Skill</p>
+            <div class="bar"><div class="bar-fill" style="width:80%;">80%</div></div>
+
+            <p>Adaptability</p>
+            <div class="bar"><div class="bar-fill" style="width:70%;">70%</div></div>
+
+            <p>Empathy</p>
+            <div class="bar"><div class="bar-fill" style="width:65%;">65%</div></div>
+
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="skill-section">
+            <div class="section-title">Languages</div>
+
+            <p>Bahasa Malaysia</p>
+            <div class="bar"><div class="bar-fill" style="width:90%;">90%</div></div>
+
+            <p>English</p>
+            <div class="bar"><div class="bar-fill" style="width:80%;">80%</div></div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- NAVIGATION -->
+<div class="nav">
+    <button><a href="home.html" target="blank">HOME</a></button> |
+    <button><a href="personaldetails.html" target="bottomFrame">PERSONAL DETAILS</a></button> |
+    <button><a href="edu.html" target="bottomFrame">EDUCATION</a></button> |
+    <button><a href="work.html" target="bottomFrame">WORK EXPERIENCE</a></button>
+</div>
+
+<footer>
+    <p class="footer-title">Find me on my socials</p>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/winternight_court/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/hurul-aina-047619399/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/whoruleina13" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://open.spotify.com/user/tcdo3jlolviyhmnk31d2w57dk" target="_blank"><i class="fab fa-spotify"></i></a>
+    </div>
+
+    <p class="footer-credit">Made by Hurul Aina</p>
+</footer>
+
+</body>
+</html>

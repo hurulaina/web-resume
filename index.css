@@ -1,0 +1,491 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Times New Roman', sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #000000;
+}
+
+/* NAVBAR */
+nav {
+  width: 100%;
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+nav .left {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+nav .left span {
+  font-weight: 400;
+  color: #555;
+}
+
+/* MAIN LAYOUT GRID */
+.main-container {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  height: calc(100vh - 80px);
+}
+
+/* LEFT BACKGROUND */
+.left-bg {
+  background: #99ddff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* PROFILE CARD */
+.profile-card {
+  width: 340px;
+  background: #dff9ff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* Profile upper content */
+.profile-content {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.profile-img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.job-title {
+  margin-top: 8px;
+  letter-spacing: 2px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Hover animation */
+.profile-card {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.profile-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.18);
+}
+
+/* Social icons bar */
+.profile-social {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  padding: 15px 0;
+  background: white;
+  border-top: 1px solid #e5e5e5;
+}
+
+.profile-social a {
+  font-size: 20px;
+  color: #000;
+  transition: 0.2s;
+}
+
+.profile-social a:hover {
+  color: #1a73e8;
+}
+
+/* RIGHT CONTENT */
+.right-content {
+  padding: 120px 90px;
+}
+
+.right-content h1 {
+  font-size: 70px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.right-content p.subtitle {
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+/* BUTTONS */
+.buttons {
+  margin-bottom: 40px;
+}
+
+.buttons a {
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-size: 16px;
+  margin-right: 15px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: 0.25s;
+}
+
+.buttons .resume {
+  background: #4A7DFF;
+  color: #fff;
+}
+
+.buttons .resume:hover {
+  background: #99ddff;
+  color: #000;
+}
+
+.buttons .gallery {
+  border: 2px solid #000;
+  color: #000;
+}
+
+.buttons .gallery:hover {
+  background: #000;
+  color: #fff;
+}
+
+footer {
+    width: 100%;
+    clear: both;
+}
+
+/* Footer */
+footer {
+    background-color: #ffffff;
+    padding: 25px 10px;
+    text-align: center;
+    border-top: 1px solid #4dc3ff;
+    margin-top: 60px;
+    font-family: "Times New Roman", sans-serif;
+}
+
+.footer-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #003f66;
+}
+
+.social-icons a {
+    margin: 0 20px;
+    font-size: 28px;
+    color: #005c99;
+    transition: 0.25s;
+}
+
+.social-icons a:hover {
+    opacity: 0.6;
+    transform: translateY(-3px);
+}
+
+.footer-menu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+.footer-menu li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+.footer-menu li a {
+    color: #003f66;
+    text-decoration: none;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.footer-menu li a:hover {
+    color: #999;
+}
+
+.footer-credit {
+    margin-top: 15px;
+    font-size: 16px;
+    color: #003f66;
+    opacity: 0.85;
+}
+
+
+/* PARAGRAPH SECTION */
+.right-content p.text {
+  width: 78%;
+  line-height: 1.7;
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .main-container {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  .left-bg {
+    padding: 40px 0;
+  }
+
+  .right-content {
+    padding: 60px 40px;
+  }
+
+  .right-content h1 {
+    font-size: 50px;
+  }
+}
+
+@media (max-width: 600px) {
+  nav {
+    padding: 15px 20px;
+  }
+
+  .right-content h1 {
+    font-size: 40px;
+  }
+
+  .right-content p.subtitle {
+    font-size: 16px;
+  }
+
+  .buttons a {
+    padding: 10px 22px;
+    font-size: 14px;
+  }
+
+  .right-content p.text {
+    width: 100%;
+  }
+}
+
+/* FLOATING MUSIC CONTROLS */
+.music-controls {
+    position: fixed;
+    top: 20%;
+    right: 15px;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.85);
+    border: 2px solid #005c99;
+    padding: 8px; 
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    z-index: 99999;
+    backdrop-filter: blur(5px);
+    text-align: center;
+}
+
+.music-controls button {
+    background: #005c99;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    margin: 4px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 40%;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.music-controls button:hover {
+    background: #003d66;
+}
+
+.music-controls input[type="range"] {
+    width: 40%;
+    margin-top: 6px;
+}
+
+/* ============================
+   PROFESSIONAL MOBILE OPTIMIZATION
+   — Keeps original design, only improves responsiveness
+   ============================ */
+
+/* Medium screens (tablets) */
+@media (max-width: 960px) {
+
+  /* Reduce large paddings */
+  .right-content {
+    padding: 50px 30px;
+  }
+
+  /* Keep layout readable */
+  .right-content h1 {
+    font-size: 48px;
+  }
+
+  /* Footer spacing improvement */
+  footer {
+    padding: 20px 10px;
+  }
+
+  /* Music controls smaller */
+  .music-controls {
+    right: 12px;
+    padding: 6px;
+    border-radius: 12px;
+  }
+
+  .music-controls button {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .music-controls input[type="range"] {
+    width: 50%;
+  }
+}
+
+
+/* =====================================
+   Small screens (phones)
+   ===================================== */
+@media (max-width: 600px) {
+
+  nav {
+    padding: 12px 15px;
+  }
+
+  .main-container {
+    grid-template-columns: 1fr;
+  }
+
+  /* Profile card fits perfectly */
+  .profile-card {
+    width: 300px;
+    transform: scale(0.95);
+  }
+
+  .profile-img {
+    width: 150px;
+    height: 150px;
+  }
+
+  /* Improve mobile typography */
+  .right-content {
+    padding: 40px 25px;
+  }
+
+  .right-content h1 {
+    font-size: 36px;
+  }
+
+  .right-content p.subtitle {
+    font-size: 15px;
+  }
+
+  .right-content p.text {
+    width: 100%;
+    font-size: 14.5px;
+  }
+
+  /* Buttons more tap-friendly */
+  .buttons a {
+    padding: 10px 20px;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+  /* Footer adjustments */
+  .social-icons a {
+    margin: 0 14px;
+    font-size: 24px;
+  }
+
+  /* Clean footer menu wrapping */
+  .footer-menu li {
+    display: block;
+    margin: 6px 0;
+  }
+
+  .footer-menu {
+    margin-top: 18px;
+  }
+
+  /* Music controls — reduced size, adjusted for mobile */
+  .music-controls {
+    top: 28%;
+    right: 10px;
+    padding: 6px 4px;
+    border-radius: 12px;
+  }
+
+  .music-controls button {
+    width: 100%;
+    margin: 3px 0;
+    font-size: 11px;
+    padding: 6px 6px;
+  }
+
+  .music-controls input[type="range"] {
+    width: 100%;
+  }
+}
+
+
+/* =====================================
+   Extra small screens (very small phones)
+   iPhone SE, older Samsung, 360px width
+   ===================================== */
+@media (max-width: 430px) {
+
+  /* Title scaling */
+  .right-content h1 {
+    font-size: 30px;
+  }
+
+  .right-content p.subtitle {
+    font-size: 14px;
+  }
+
+  /* Profile card reduced slightly */
+  .profile-card {
+    width: 270px;
+  }
+
+  /* Social icons smaller */
+  .social-icons a {
+    font-size: 22px;
+    margin: 0 10px;
+  }
+
+  /* Footer menu optimized */
+  .footer-menu li a {
+    font-size: 15px;
+  }
+
+  /* Music controls compact mode */
+  .music-controls {
+    top: 30%;
+    right: 6px;
+    padding: 5px;
+    border-radius: 10px;
+  }
+
+  .music-controls button {
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .music-controls input[type="range"] {
+    width: 90%;
+  }
+}*

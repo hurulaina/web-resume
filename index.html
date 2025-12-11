@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+
+  <!-- Correct Font Awesome (supports fab icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="home.css">
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="left">Hurul Aina Karmila <span>/ LIBRARY MANAGEMENT STUDENT</span></div>
+</nav>
+
+<!-- MAIN LAYOUT -->
+<div class="main-container">
+
+  <!-- LEFT BG + PROFILE CARD -->
+  <div class="left-bg">
+
+    <div class="profile-card">
+      <div class="profile-content">
+        <img src="me4.jpg" class="profile-img">
+        <h2>Hurul Aina Karmila</h2>
+        <p class="job-title">LIBRARY MANAGEMENT STUDENT</p>
+      </div>
+
+      <div class="profile-social">
+        <a href="https://www.instagram.com/winternight_court/"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="https://x.com/whoruleina13?t=YFbWN3Xce6xsjHiQyFsjjA&s=09"><i class="fab fa-twitter"></i></a>
+        <a href="https://open.spotify.com/user/tcdo3jlolviyhmnk31d2w57dk?si=83757206245b4e66"><i class="fab fa-spotify"></i></a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT CONTENT -->
+  <div class="right-content">
+    <h1>Welcome~</h1>
+    <p class="subtitle">Here’s who I am</p>
+
+    <div class="buttons">
+      <a href="frame.html" class="resume">RESUME</a>
+      <a href="gallery.html" class="gallery">GALLERY</a>
+    </div>
+
+    <p class="text">
+      I'm Hurul.
+      Bachelor's Degree in Library Management.
+      Dedicated reader and fluent English speaker.
+    </p>
+
+    <p class="text">
+      I'm a dedicated reader of fiction and writer. Even though all I have ever written is fanfictions, I am dedicated to keep practicing my writing until I can make my own stories.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+    <p class="footer-title">Find me on my socials</p>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/winternight_court/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/whoruleina13?t=YFbWN3Xce6xsjHiQyFsjjA&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://open.spotify.com/user/tcdo3jlolviyhmnk31d2w57dk?si=83757206245b4e66" target="_blank"><i class="fab fa-spotify"></i></a>
+    </div>
+
+<ul class="footer-menu">
+        <li><a href="home.html">Home</a></li> |
+        <li><a href="personaldetails.html">Personal Details</a></li> |
+        <li><a href="work.html">Work Experience</a></li> |
+        <li><a href="edu.html">Education</a></li> |
+        <li><a href="skills.html">Skills</a></li> |
+    </ul>
+
+    <p class="footer-credit">Made by Hurul Aina</p>
+</footer>
+
+<!-- AUDIO PLAYLIST -->
+<audio id="bgMusic" autoplay>
+<source src="music3.m4a" type="audio/mp3">
+<source src="music4.m4a" type="audio/mp3">
+<source src="music2.m4a" type="audio/mp3">
+</audio>
+
+<!-- FLOATING MUSIC CONTROL PANEL -->
+<div class="music-controls">
+    <button onclick="toggleMusic()">▶️ / ⏸️</button>
+    <button onclick="muteMusic()">🔇</button>
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="1"
+           onchange="changeVolume(this.value)">
+</div>
+
+
+<!-- FADE-IN SCRIPT -->
+<script>
+  document.body.style.opacity = 0;
+  window.onload = () => {
+    document.body.style.transition = "opacity 0.8s ease";
+    document.body.style.opacity = 1;
+  };
+</script>
+
+<script>
+
+/* === PLAYLIST SETUP === */
+const playlist = [
+    "music3.m4a",
+    "music4.m4a",
+    "music2.m4a"
+];
+
+let currentTrack = 0;
+const bgMusic = document.getElementById("bgMusic");
+
+// load the first track
+bgMusic.src = playlist[currentTrack];
+bgMusic.load();
+bgMusic.play();
+
+/* Auto-play next track */
+bgMusic.addEventListener("ended", function () {
+    currentTrack = (currentTrack + 1) % playlist.length; 
+    bgMusic.src = playlist[currentTrack];
+    bgMusic.play();
+});
+
+/* === MUSIC CONTROL PANEL === */
+function toggleMusic() {
+    if (bgMusic.paused) {
+        bgMusic.play();
+    } else {
+        bgMusic.pause();
+    }
+}
+
+function muteMusic() {
+    bgMusic.muted = !bgMusic.muted;
+}
+
+function changeVolume(v) {
+    bgMusic.volume = v;
+}
+</script>
+
+
+</body>
+</html>
+

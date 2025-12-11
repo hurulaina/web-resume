@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Details — Web Resume</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg:#f4f6f9;
+      --muted:#6b7280;
+      --accent:#0b5fff;
+      --radius:14px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:var(--bg);color:#0f172a;}
+
+    /* NAVBAR */
+    nav{
+      width:100%;background:#ffffff;padding:16px 40px;
+      box-shadow:0 2px 10px rgba(0,0,0,0.05);
+      position:sticky;top:0;z-index:10;
+      display:flex;justify-content:space-between;align-items:center
+    }
+    nav .logo{font-size:20px;font-weight:700;color:var(--accent)}
+    nav ul{list-style:none;display:flex;gap:24px}
+    nav ul li a{text-decoration:none;color:#111827;font-weight:500;font-size:15px}
+
+    /* HERO */
+    .hero{padding:70px 40px;text-align:center}
+    .hero h1{font-size:34px;font-weight:800;margin-bottom:10px}
+    .hero p{font-size:16px;color:var(--muted)}
+
+    /* SECTION */
+    section{
+      padding:30px 40px;
+      max-width:1000px;
+      margin:auto;
+      margin-top:10px;       /* Reduced spacing */
+    }
+
+    h2.section-title{
+      font-size:26px;font-weight:700;margin-bottom:18px;
+      color:#0f172a;border-left:6px solid var(--accent);padding-left:12px
+    }
+
+    /* UPDATED GRADIENT BOX */
+    .info-card{
+      background: linear-gradient(90deg, #66bfff 0%, #4aa7ff 35%, #cceaff 100%);
+      padding:24px;border-radius:var(--radius);
+      box-shadow:0 4px 16px rgba(0,0,0,0.06);
+      margin-bottom:18px; /* Reduced gap */
+    }
+
+    .info-row{
+      display:flex;justify-content:space-between;flex-wrap:wrap;margin-bottom:12px
+    }
+    .info-label{font-weight:600}
+    .info-row span{font-size:15px;color:#0f172a}
+
+    /* Footer */
+    footer {
+      background-color: #ffffff;
+      padding: 25px 10px;
+      text-align: center;
+      border-top: 1px solid #4dc3ff;
+      margin-top: 40px;
+      font-family: "Times New Roman", sans-serif;
+    }
+    .footer-title {font-size:20px;font-weight:bold;margin-bottom:10px;color:#003f66;}
+    .social-icons a {margin:0 12px;font-size:28px;color:#005c99;transition:0.25s;}
+    .social-icons a:hover {opacity:0.6;transform:translateY(-3px);}
+    .footer-credit {margin-top:15px;font-size:16px;color:#003f66;opacity:0.85;}
+
+    @media(max-width:700px){
+      nav ul{display:none}
+      .info-row{flex-direction:column;gap:6px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">Hurul Aina</div>
+    <ul>
+      <li><a href="home.html" target="blank">HOME</a></li>
+      <li><a href="edu.html" target="bottomFrame">EDUCATION</a></li>
+      <li><a href="work.html" target="bottomFrame">WORK EXPERIENCE</a></li>
+      <li><a href="skills.html" target="bottomFrame">SKILLS</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero" id="about">
+    <h1>Personal Details</h1>
+    <p>Hurul Aina Karmila. A Final Year Library Management student.</p>
+  </div>
+
+  <!-- BASIC INFORMATION -->
+  <section id="details">
+    <h2 class="section-title">Basic Information</h2>
+
+    <div class="info-card">
+      <div class="info-row"><span class="info-label">Full Name:</span><span>Hurul Aina Karmila Binti Mohamad Rosly</span></div>
+      <div class="info-row"><span class="info-label">Date of Birth:</span><span>August 18, 2002</span></div>
+      <div class="info-row"><span class="info-label">Nationality:</span><span>Malaysian</span></div>
+      <div class="info-row"><span class="info-label">Location:</span><span>Ipoh, Perak</span></div>
+      <div class="info-row"><span class="info-label">Marital Status:</span><span>Single</span></div>
+    </div>
+
+    <!-- PROFESSIONAL SUMMARY -->
+    <h2 class="section-title">Professional Summary</h2>
+    <div class="info-card">
+      <p style="font-size:15px;text-align:left;">
+        Motivated Library Management student with hands-on experience in library operations, cataloguing, and user assistance. Strong proficiency in Microsoft Office and digital tools, excellent communication skills, and additional customer service experience in printing and document services.
+      </p>
+    </div>
+
+    <!-- AVAILABILITY -->
+    <h2 class="section-title">Availability</h2>
+    <div class="info-card">
+      <p style="font-size:15px">Available to start immediately / within 2 weeks.</p>
+    </div>
+
+    <!-- INTERESTS (Closer now) -->
+    <h2 class="section-title">Interests</h2>
+    <div class="info-card">
+      <p style="font-size:15px;text-align:left;">Reading, Writing, digital creativity, photography, personal development.</p>
+    </div>
+
+    <!-- REFERENCES (Closer now) -->
+    <h2 class="section-title">References</h2>
+    <div class="info-card">
+      <p>Dr. Sharunizam Bin Shari.</p>
+      <p>Pensyarah Kanan Fakulti Sains Maklumat,</p> 
+      <p>UiTM Kampus Sungai Petani</p>
+      <p>No.Tel: 019-957 9576</p>
+      <p>Email: nizam057@uitm.edu.my</p>
+<br>
+<br>
+      <p>Dr. Mohammad Azhan Bin Abdul Aziz</p> 
+      <p>Pensyarah Kanan Fakulti Sains Maklumat,</p> 
+      <p>UiTM Kampus Sungai Petani</p>
+      <p>No.Tel: 012-365 9330</p>
+      <p>Email: azhan@uitm.edu.my</p>
+    </div>
+
+    <!-- CONTACT INFO (Closer now) -->
+    <h2 class="section-title">Contact Information</h2>
+    <div class="info-card">
+      <div class="info-row"><span class="info-label">Email:</span><span>hurulaina02@gmail.com</span></div>
+      <div class="info-row"><span class="info-label">Phone:</span><span>+60 16-899 2403</span></div>
+      <div class="info-row"><span class="info-label">LinkedIn:</span><span>https://www.linkedin.com/in/hurul-aina-047619399/</span></div>
+      <div class="info-row"><span class="info-label">Spotify:</span><span>https://open.spotify.com/user/Saranghaeina</span></div>
+    </div>
+
+  </section>
+
+  <footer>
+    <p class="footer-title">Find me on my socials</p>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/winternight_court/" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/hurul-aina-047619399/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://x.com/whoruleina13?t=YFbWN3Xce6xsjHiQyFsjjA&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://open.spotify.com/user/tcdo3jlolviyhmnk31d2w57dk?si=83757206245b4e66" target="_blank"><i class="fab fa-spotify"></i></a>
+    </div>
+    <p class="footer-credit">Made by Hurul Aina</p>
+  </footer>
+
+</body>
+</html>
